@@ -1,0 +1,9 @@
+stow -vt ~ *
+
+	* Creates simlinks for everything
+	* -v = verbose
+	* -t = target directory
+
+stow -vDt ~ *
+	
+	* Deletes all simlinks
