@@ -1,0 +1,304 @@
+#################################################################
+# KEYBOARD BINDINGS FOR ANY TWM
+#################################################################
+
+#################################################################
+# SUPER + ... KEYS
+#################################################################
+
+#Browser
+super + c
+	firefox
+
+#Browser 2
+super + shift + c
+	chromium
+
+#Terminal
+super + Return
+	alacritty
+
+#Fallback Terminal
+super + shift + Return
+	kitty
+
+#Xkill
+super + Escape
+	xkill
+
+#File Manager
+super + x
+	thunar
+
+#Open Uni Folder In Thunar
+super + shift + x
+	thunar ~/OneDrive/Uni
+
+#dmenu
+super + d
+	dmenu_run
+
+#Rofi
+super + space
+	rofi -show drun
+
+#Bluetooth Manager
+super + b
+	blueman-manager
+
+#NordVPN
+super + n
+	/home/vraj/Downloads/Scripts/NordVPN.sh
+
+#Monitor Script
+super + m
+	/home/vraj/Downloads/Scripts/monitor.sh
+
+#Start polybar
+super + p
+	/home/vraj/.config/polybar/launch.sh
+
+#################################################################
+# SUPER + ALT KEYS
+#################################################################
+
+#reload sxhkd:
+super + alt + s
+	pkill -USR1 -x sxhkd
+
+#Quit/Restart bspwm
+super + alt + {q,r}
+	bspc {quit, wm -r}
+
+#################################################################
+# CONTROL + ALT KEYS
+#################################################################
+
+#Pulse Audio Control
+ctrl + alt + u
+     pavucontrol
+
+#################################################################
+#     SCREENSHOTS
+#################################################################
+
+#Screenshot
+Print
+    flameshot gui
+
+#################################################################
+#     MULTIMEDIA KEYS
+#################################################################
+
+#Raises volume
+XF86AudioRaiseVolume
+    amixer set Master 5%+
+
+#Lowers volume
+XF86AudioLowerVolume
+    amixer set Master 5%-
+
+#Mute
+XF86AudioMute
+    amixer -D pulse set Master 1+ toggle
+
+#PLAY
+XF86AudioPlay
+    playerctl play-pause
+
+#Next
+XF86AudioNext
+    playerctl next
+
+#previous
+XF86AudioPrev
+    playerctl previous
+
+#Stop
+XF86AudioStop
+    playerctl stop
+
+#Brightness up
+XF86MonBrightnessUp
+    xbacklight -inc 5
+
+#Brightness down
+XF86MonBrightnessDown
+    xbacklight -dec 5
+
+#################################################################
+##################   DESKTOP SPECIFIC    ########################
+#################################################################
+
+#################################################################
+# SUPER + KEYS
+#################################################################
+
+#Toggle fullscreen of window
+super + f
+	bspc node --state \~fullscreen
+
+# Toggle pseudo tiling of window
+super + t
+	bspc node --state \~pseudo_tiled
+
+#kill
+super + q
+	bspc node -c
+
+#Focus selected desktop
+super + Tab
+	bspc desktop -f '^{1-9,10}'
+
+# Increase/decrease window gap on focused desktop
+super + bracket{left,right}
+	bspc config -d focused window_gap $((`bspc config -d focused window_gap` {-,+} 5 ))
+
+# Set the window state
+super + shift + space
+	bspc node -t {floating,tiled}
+
+# Move focus to other monitor
+super + BackSpace
+		bspc monitor -f next
+
+#################################################################
+# SUPER + CONTROL KEYS
+#################################################################
+
+# Cancel preselection
+super + ctrl + space
+	bspc node --presel-dir cancel
+
+#################################################################
+# SUPER + SHIFT KEYS
+#################################################################
+
+#Kill
+super + shift + q
+	bspc node -c
+
+#Logout
+super + alt + x
+	oblogout
+
+# Focus/swap windows by direction
+super + {_,shift + }{h,j,k,l}
+	bspc node --{focus,swap} {west,south,north,east}
+
+# Flip layout vertically/horizontally
+super + {_,shift + }v
+	bspc node @/ --flip {vertical,horizontal}
+
+# Move focused window to other monitor
+super + shift + Left
+	bspc node -m next --follow
+
+# Move focused window to other monitor
+super + shift + Right
+		bspc node -m next --follow
+
+# Move focused window to other monitor
+super + shift + Up
+	bspc node -m next --follow
+
+# Move focused window to other monitor
+super + shift + Down
+		bspc node -m next --follow
+
+#################################################################
+# SUPER + CONTROL KEYS
+#################################################################
+
+# Focus/swap windows by direction
+super + ctrl + {Left,Down,Up,Right}
+	bspc node --{focus} {west,south,north,east}
+
+# Contract tiled space
+super + ctrl + {h,j,k,l}
+	bspc node {@east -r -10,@north -r +10,@south -r -10,@west -r +10}
+
+# Focus parent/brother/first/second for preselection
+super + ctrl + {e,r,t,y}
+	bspc node --focus @{parent,brother,first,second}
+
+# Preselect the splitting area for next window on leaf/parent
+super + ctrl + {u,i,o,p}
+	bspc node --presel-dir \~{west,south,north,east}
+
+# Define splitting ratio for next window on leaf/parent
+super + ctrl + {_,shift +}{1-9}
+	bspc node {_,@/} --presel-ratio 0.{1-9}
+
+
+#################################################################
+# ALT KEYS
+#################################################################
+
+#Focus selected desktop
+alt + Tab
+	bspc desktop -f '^{1-9,10}'
+
+	#Focus selected desktop
+alt + shift + Tab
+	bspc desktop -f '^{1-9,10}'
+
+#Rotate desktop
+alt + space
+	bspc node @/ --rotate {90,-90}
+
+#################################################################
+# ALT + SHIFT KEYS
+#################################################################
+
+# Expand tiled space
+alt + shift + {h,j,k,l}
+	bspc node {@west -r -10,@south -r +10,@north -r -10,@east -r +10}
+
+#################################################################
+# CTRL + ALT KEYS
+#################################################################
+
+# Focus next/previous window
+ctrl + alt + Left
+	bspc node --focus west
+
+# Focus next/previous window
+ctrl + alt + Right
+	bspc node --focus east
+
+# Focus Up window
+ctrl +alt + Up
+	bspc node --focus north
+
+# Focus Down window
+ctrl + alt + Down
+	bspc node --focus south
+
+#################################################################
+#################################################################
+##################   AZERTY/QWERTY/ ... KEYBOARD#################
+#################################################################
+#################################################################
+
+#Switch here between qwerty and azerty or make new one
+#Focus selected desktop FOR QWERTY KEYBOARDS
+super + {1-9,0}
+	bspc desktop -f '^{1-9,10}'
+
+#Focus selected desktop	FOR AZERTY KEYBOARDS
+#super + {ampersand,eacute,quotedbl,apostrophe,parenleft,section,egrave,exclam,ccedilla,agrave}
+#    bspc desktop -f '^{1-9,10}'
+
+#################################################################
+
+#Switch here between qwerty and azerty or make new one
+#Move window to selected desktop FOR QWERTY KEYBOARDS
+super + shift + {1-9,0}
+    id=$(bspc query -N -n); bspc node -d ^{1-9,10}; bspc node -f ${id}}
+
+#Move window to selected desktop FOR AZERTY KEYBOARDS
+#super + shift + {ampersand,eacute,quotedbl,apostrophe,parenleft,section,egrave,exclam,ccedilla,agrave}
+#    id=$(bspc query -N -n); bspc node -d ^{1-9,10}; bspc node -f ${id}}
+
+#################################################################x
