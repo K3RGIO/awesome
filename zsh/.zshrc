@@ -101,5 +101,10 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias yay='paru'
 alias vim='nvim'
+alias ls='lsd'
+alias ll='lsd -l'
+alias la='lsd -a'
+alias s='sudo'
 
+#Autostart
 pfetch
