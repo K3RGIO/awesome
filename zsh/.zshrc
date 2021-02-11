@@ -105,6 +105,7 @@ alias ls='lsd'
 alias ll='lsd -l'
 alias la='lsd -a'
 alias s='sudo'
+alias pac='sudo pacman'
 
 #Autostart
 pfetch
