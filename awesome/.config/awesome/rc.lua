@@ -224,6 +224,26 @@ globalkeys = gears.table.join(
     awful.key({ modkey },            "b",     function ()
     awful.util.spawn("blueman-manager") end,
               {description = "blueman-manager", group = "Utilities"}),
+    
+    -- Brightness Up
+    awful.key({ }, "XF86MonBrightnessDown", function ()
+        awful.util.spawn("xbacklight -dec 5") end),
+    
+    -- Brightness Down
+    awful.key({ }, "XF86MonBrightnessUp", function ()
+        awful.util.spawn("xbacklight -inc 5") end),
+
+    -- Volume Up
+    awful.key({ }, "XF86AudioRaiseVolume", function ()
+       awful.util.spawn("amixer set Master 5%+") end),
+    
+    -- Volume Down
+    awful.key({ }, "XF86AudioLowerVolume", function ()
+       awful.util.spawn("amixer set Master 5%-") end),
+    
+    -- Toggle Mute
+    awful.key({ }, "XF86AudioMute", function ()
+       awful.util.spawn("amixer set Master toggle") end),
 
     -- Screenshot
     awful.key({ modkey },            "Print",     function ()
@@ -430,6 +450,7 @@ awful.spawn.with_shell("/home/vraj/.config/polybar/launch.sh")
 awful.spawn.with_shell("nm-applet")
 awful.spawn.with_shell("dunst")
 awful.spawn.with_shell("feh --bg-fill ~/Pictures/Wallpapers/fantasy-girl.jpg")
+awful.spawn.with_shell("play-with-mpv")
 
 client.connect_signal("focus", function(c) c.border_color = "#957B9F" end)
 
